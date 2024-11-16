@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate House</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ffe5d9, #ffb4a2);
+            color: #3e2723;
+        }
+        header {
+            background-color: #6a1b9a;
+            color: white;
+            padding: 20px 10px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        section {
+            margin: 20px auto;
+            width: 80%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3 {
+            border-bottom: 2px solid #6a1b9a;
+            padding-bottom: 5px;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        form input, form button {
+            flex: 1 1 calc(33.33% - 10px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        form button {
+            background: #6a1b9a;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        form button:hover {
+            background: #4a148c;
+        }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+        }
+        th {
+            background: #6a1b9a;
+            color: white;
+        }
+        tr:hover td {
+            background: #ffe0b2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chocolate House Management</h1>
+    </header>
+    <section>
+        <h2>Add Seasonal Flavor</h2>
+        <form action="/add_flavor" method="POST">
+            <input type="text" name="flavor_name" placeholder="Flavor Name" required>
+            <input type="date" name="start_date" required>
+            <input type="date" name="end_date" required>
+            <button type="submit">Add Flavor</button>
+        </form>
+    </section>
+    <section>
+        <h3>Seasonal Flavors</h3>
+        <table>
+            <tr>
+                <th>Flavor Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+            {% for flavor in seasonal_flavors %}
+            <tr>
+                <td>{{ flavor[1] }}</td>
+                <td>{{ flavor[2] }}</td>
+                <td>{{ flavor[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <section>
+        <h2>Add Ingredient</h2>
+        <form action="/add_ingredient" method="POST">
+            <input type="text" name="ingredient_name" placeholder="Ingredient Name" required>
+            <input type="number" name="quantity" placeholder="Quantity" required>
+            <button type="submit">Add Ingredient</button>
+        </form>
+    </section>
+
+    <section>
+        <h3>Ingredient Inventory</h3>
+        <table>
+            <tr>
+                <th>Ingredient Name</th>
+                <th>Quantity</th>
+            </tr>
+            {% for ingredient in ingredients %}
+            <tr>
+                <td>{{ ingredient[1] }}</td>
+                <td>{{ ingredient[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <section>
+        <h2>Customer Feedback</h2>
+        <form action="/add_feedback" method="POST">
+            <input type="text" name="customer_name" placeholder="Customer Name" required>
+            <input type="text" name="suggested_flavor" placeholder="Suggested Flavor">
+            <input type="text" name="allergy_concern" placeholder="Allergy Concern">
+            <button type="submit">Add Feedback</button>
+        </form>
+    </section>
+    
+    <section>
+        <h3>Customer Feedback</h3>
+        <table>
+            <tr>
+                <th>Customer Name</th>
+                <th>Suggested Flavor</th>
+                <th>Allergy Concern</th>
+            </tr>
+            {% for feedback in feedbacks %}
+            <tr>
+                <td>{{ feedback[1] }}</td>
+                <td>{{ feedback[2] }}</td>
+                <td>{{ feedback[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+</body>
+</html>
