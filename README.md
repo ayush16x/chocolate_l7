@@ -1,10 +1,10 @@
 Step 1:
 
-Clone the repository: git clone https://github.com/anasmallick35/chocolate_house
+Clone the repository: git clone https://github.com/ayush16x/chocolate_l7
 
 Step 2:
 
-Navigate to the project folder: cd chocolate_house
+Navigate to the project folder: cd chocolate_l7
 
 Step 3:
 
